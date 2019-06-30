@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button  defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ problem ? problem.title : 'Problem title'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding text-center *ngIf="problem">
+<h2>{{ problem.sub_title }}</h2>
+<h3>{{ problem.description }}</h3>
+<h5>{{ problem.info }}</h5>
+<h5 *ngIf="API.selectedRev && API.selectedRev !== 'None' ">{{ API.selectedRev }} : {{ API.selectedRev === 'CFG' ? API.CFG : API.TCG }}</h5>
+</ion-content>
