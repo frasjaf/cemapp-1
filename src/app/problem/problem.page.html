@@ -10,6 +10,6 @@
 <ion-content padding text-center *ngIf="problem">
 <h2>{{ problem.sub_title }}</h2>
 <h3>{{ problem.description }}</h3>
-<h5>{{ problem.info }}</h5>
+<div [innerHTML]="problem.info | safeHtml"></div>
 <h5 *ngIf="API.selectedRev && API.selectedRev !== 'None' ">{{ API.selectedRev }} : {{ API.selectedRev === 'CFG' ? API.CFG : API.TCG }}</h5>
 </ion-content>

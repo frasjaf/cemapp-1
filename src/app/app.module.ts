@@ -11,7 +11,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {IonicStorageModule} from '@ionic/storage';
 import {HttpClientModule} from '@angular/common/http';
 import {ApiService} from './api.service';
-import {NgPipesModule} from 'ngx-pipes';
+import { SafeHtmlPipe } from './safe-html.pipe';
 
 @NgModule({
     declarations: [AppComponent],
@@ -25,7 +25,6 @@ import {NgPipesModule} from 'ngx-pipes';
             driverOrder: ['indexeddb', 'sqlite', 'websql']
         }),
         HttpClientModule,
-        NgPipesModule
     ],
     providers: [
         StatusBar,
