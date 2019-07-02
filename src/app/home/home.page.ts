@@ -11,6 +11,7 @@ import {AlertController} from '@ionic/angular';
 export class HomePage {
   query = '';
   filter = null;
+  filters = [];
   constructor(private API: ApiService, private router: Router, public alertController: AlertController) {
     this.API.updateProblems();
   }
@@ -23,6 +24,8 @@ export class HomePage {
   doFilter() {
     const filters = [];
     this.API.problems.forEach(problem => {
+    if (!this.filters.indexOf(problem.sub_title)) {
+      this.filters.push(problem.sub_title);
       filters.push({
         name: problem.sub_title,
         type: 'radio',
@@ -30,6 +33,7 @@ export class HomePage {
         value: problem.sub_title,
         checked: this.filter === problem.sub_title
       });
+    }
     });
     filters.push({
       name: 'All',
