@@ -16,7 +16,7 @@ export class ApiService {
   constructor(private http: HttpClient, private storage: Storage) { }
 
   updateProblems() {
-    this.http.get('http://localhost:8000/api/problems').subscribe((res: any) => {
+    this.http.get('http://cem.lemooo.com/api/problems').subscribe((res: any) => {
       if (res.length === 0) {
         this.storage.get('myBackup').then(data => {
           data = JSON.parse(data);

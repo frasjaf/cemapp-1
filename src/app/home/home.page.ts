@@ -11,8 +11,8 @@ import {AlertController} from '@ionic/angular';
 export class HomePage {
   query = '';
   filter = null;
-  filters = [];
   constructor(private API: ApiService, private router: Router, public alertController: AlertController) {
+    this.presentRules();
     this.API.updateProblems();
   }
   openProblem(index) {
@@ -21,11 +21,22 @@ export class HomePage {
   doRiv() {
     this.presentRev();
   }
+  async presentRules() {
+    const alert = await this.alertController.create({
+      header: 'Alert',
+      subHeader: 'Subtitle',
+      message: `Hello `,
+      buttons: ['Agree']
+    });
+
+    await alert.present();
+  }
   doFilter() {
     const filters = [];
+    const myFilters = [];
     this.API.problems.forEach(problem => {
-    if (!this.filters.indexOf(problem.sub_title)) {
-      this.filters.push(problem.sub_title);
+    if (myFilters.indexOf(problem.sub_title) == -1) {
+      myFilters.push(problem.sub_title);
       filters.push({
         name: problem.sub_title,
         type: 'radio',
